@@ -3,7 +3,6 @@ package com.zipwhip.signals.presence;
 import com.zipwhip.signals.address.ClientAddress;
 import com.zipwhip.signals.timeline.TimelineEvent;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -17,7 +16,7 @@ import java.util.Set;
  * Time: 2:43 PM
  */
 
-public class Presence implements Serializable, TimelineEvent {
+public class Presence implements TimelineEvent {
 
     // we control the serialisation version
     private static final long serialVersionUID = 10375439476839415L;
