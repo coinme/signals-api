@@ -1,4 +1,4 @@
-package com.zipwhip.presence;
+package com.zipwhip.signals2.presence;
 
 import java.io.Serializable;
 import java.util.HashMap;

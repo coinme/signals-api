@@ -1,7 +1,7 @@
-package com.zipwhip.presence;
+package com.zipwhip.signals2.presence;
 
-import com.zipwhip.signals.address.ClientAddress;
-import com.zipwhip.signals.timeline.TimelineEvent;
+import com.zipwhip.signals2.address.ClientAddress;
+import com.zipwhip.signals2.timeline.TimelineEvent;
 
 import java.util.Date;
 import java.util.Set;

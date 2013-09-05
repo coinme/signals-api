@@ -1,6 +1,6 @@
-package com.zipwhip.signals.message;
+package com.zipwhip.signals2.message;
 
-import com.zipwhip.signals.address.Address;
+import com.zipwhip.signals2.address.Address;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package com.zipwhip.signals.address;
 
+import com.zipwhip.signals2.address.ChannelAddress;
 import org.junit.Before;
 import org.junit.Test;
 
