@@ -25,12 +25,11 @@
         <connection>scm:git:git@github.com:Zipwhip/signals-api.git</connection>
     </scm>
 
-    <distributionManagement>
-        <repository>
-            <id>snapshots</id>
-            <url>http://hudson.zipwhip.com/artifactory/libs-snapshot-local</url>
-        </repository>
-    </distributionManagement>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
 
     <developers>
         <developer>
