@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Date: 9/10/13
  * Time: 2:41 PM
- *
+ * <p/>
  * I don't like putting this logic centralized in a static utility class. However, for sake of expediency
  * of development, it's convenient to do this instead of muck around with adding zipwhip-common-util as a dependency
  * for signals-api.
@@ -29,6 +29,15 @@ public class SignalContentConverter {
     public static final String SCHEDULED_DATE = "scheduledDate";
     public static final String DATE_READ = "dateRead";
     public static final String ATTACHMENTS = "attachments";
+    public static final String CARRIER = "carrier";
+    public static final String BUSINESS_NAME = "businessName";
+    public static final String TARGET_GROUP_DEVICE = "targetGroupDevice";
+    public static final String EMAIL = "email";
+    public static final String FIRST_NAME = "firstName";
+    public static final String LAST_NAME = "lastName";
+    public static final String LAST_UPDATED = "lastUpdated";
+    public static final String DATE_CREATED = "dateCreated";
+    public static final String VERSION = "version";
 
     public static SignalMessage fromSignalMessageMap(Map<String, Object> map) throws Exception {
         SignalMessage message = new SignalMessage();
@@ -46,17 +55,32 @@ public class SignalContentConverter {
         message.setScheduledDate(getLong(map, SCHEDULED_DATE));
         message.setDateRead(getLong(map, DATE_READ));
         message.setHasAttachments(getBoolean(map, ATTACHMENTS));
+        message.setDateCreated(getLong(map, DATE_CREATED));
 
         return message;
     }
 
-//    public static SignalContact fromSignalContactMap(Map<String, Object> map) throws Exception {
-//
-//    }
+    public static SignalContact fromSignalContactMap(Map<String, Object> map) throws Exception {
+        SignalContact contact = new SignalContact();
+
+        contact.setAddress(getString(map, ADDRESS));
+        contact.setBusinessName(getString(map, BUSINESS_NAME));
+        contact.setCarrier(getString(map, CARRIER));
+        contact.setDateCreated(getLong(map, DATE_CREATED));
+        contact.setDeviceId(getLong(map, DEVICE_ID));
+        contact.setEmail(getString(map, EMAIL));
+        contact.setFirstName(getString(map, FIRST_NAME));
+        contact.setLastName(getString(map, LAST_NAME));
+        contact.setLastUpdated(getLong(map, LAST_UPDATED));
+        contact.setTargetGroupDevice(getLong(map, TARGET_GROUP_DEVICE));
+        contact.setVersion(getLong(map, VERSION));
+
+        return contact;
+    }
 
     /**
      * The zipwhip cloud doesn't want to specifically bind to the SignalMessage object. So it enqueues Maps to the signal server.
-     *
+     * <p/>
      * This does cause a versioning problem on clients. We intent to solve the versioning problem via an IP address or versioning header on
      * initial connect. As far as converting between old payload and new payload, that is an unsolved issue.
      *
@@ -79,14 +103,30 @@ public class SignalContentConverter {
         map.put(FROM_NAME, message.getFromName());
         map.put(MESSAGE_TYPE, message.getMessageType());
         map.put(SCHEDULED_DATE, message.getScheduledDate());
+        map.put(DATE_CREATED, message.getDateCreated());
         map.put(TRANSMISSION_STATE, message.getTransmissionState());
 
         return map;
     }
 
-//    public HashMap<String, Object> toMap(SignalContact content) throws Exception {
-//        return null;
-//    }
+    public HashMap<String, Object> toMap(SignalContact contact) throws Exception {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        map.put(ADDRESS, contact.getAddress());
+        map.put(CARRIER, contact.getCarrier());
+        map.put(BUSINESS_NAME, contact.getBusinessName());
+        map.put(DEVICE_ID, contact.getDeviceId());
+        map.put(TARGET_GROUP_DEVICE, contact.getTargetGroupDevice());
+        map.put(EMAIL, contact.getEmail());
+        map.put(FIRST_NAME, contact.getFirstName());
+        map.put(LAST_NAME, contact.getLastName());
+
+        map.put(LAST_UPDATED, contact.getLastUpdated());
+        map.put(DATE_CREATED, contact.getDateCreated());
+        map.put(VERSION, contact.getVersion());
+
+        return map;
+    }
 
 
     private static String getString(Map<String, Object> map, String key) {
