@@ -109,7 +109,7 @@ public class SignalContentConverter {
         return map;
     }
 
-    public HashMap<String, Object> toMap(SignalContact contact) throws Exception {
+    public static HashMap<String, Object> toMap(SignalContact contact) throws Exception {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
         map.put(ADDRESS, contact.getAddress());
