@@ -38,6 +38,18 @@ public class SignalContentConverter {
     public static final String LAST_UPDATED = "lastUpdated";
     public static final String DATE_CREATED = "dateCreated";
     public static final String VERSION = "version";
+    public static final String CC = "cc";
+    public static final String BCC = "bcc";
+    public static final String DEVICE_ADDRESS = "deviceAddress";
+    public static final String LAST_CONTACT_DEVICE_ID = "lastContactDeviceId";
+    public static final String LAST_CONTACT_ID = "lastContactId";
+    public static final String LAST_CONTACT_FIRST_NAME = "lastContactFirstName";
+    public static final String LAST_CONTACT_LAST_NAME = "lastContactLastName";
+    public static final String LAST_CONTACT_MOBILE_NUMBER = "lastContactMobileNumber";
+    public static final String LAST_MESSAGE_BODY = "lastMessageBody";
+    public static final String LAST_MESSAGE_DATE = "lastMessageDate";
+    public static final String LAST_NON_DELETED_MESSAGE_DATE = "lastNonDeletedMessageDate";
+    public static final String UNREAD_COUNT = "unreadCount";
 
     public static SignalMessage fromSignalMessageMap(Map<String, Object> map) throws Exception {
         SignalMessage message = new SignalMessage();
@@ -76,6 +88,31 @@ public class SignalContentConverter {
         contact.setVersion(getLong(map, VERSION));
 
         return contact;
+    }
+
+    public static SignalConversation fromSignalConversationMap(Map<String, Object> map) throws Exception {
+        SignalConversation conversation = new SignalConversation();
+
+        conversation.setAddress(getString(map, ADDRESS));
+        conversation.setDateCreated(getLong(map, DATE_CREATED));
+        conversation.setDeviceId(getLong(map, DEVICE_ID));
+        conversation.setLastUpdated(getLong(map, LAST_UPDATED));
+        conversation.setVersion(getLong(map, VERSION));
+        conversation.setCc(getString(map, CC));
+        conversation.setBcc(getString(map, BCC));
+        conversation.setDeviceAddress(getString(map, DEVICE_ADDRESS));
+        conversation.setFingerprint(getString(map, FINGERPRINT));
+        conversation.setLastContactDeviceId(getLong(map, LAST_CONTACT_DEVICE_ID));
+        conversation.setLastContactId(getLong(map, LAST_CONTACT_ID));
+        conversation.setLastContactFirstName(getString(map, LAST_CONTACT_FIRST_NAME));
+        conversation.setLastContactLastName(getString(map, LAST_CONTACT_LAST_NAME));
+        conversation.setLastContactMobileNumber(getString(map, LAST_CONTACT_MOBILE_NUMBER));
+        conversation.setLastMessageBody(getString(map, LAST_MESSAGE_BODY));
+        conversation.setLastMessageDate(getLong(map, LAST_MESSAGE_DATE));
+        conversation.setLastNonDeletedMessageDate(getLong(map, LAST_NON_DELETED_MESSAGE_DATE));
+        conversation.setUnreadCount(getInteger(map, UNREAD_COUNT));
+
+        return conversation;
     }
 
     /**
@@ -128,6 +165,31 @@ public class SignalContentConverter {
         return map;
     }
 
+    public static HashMap<String, Object> toMap(SignalConversation conversation) throws Exception {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        map.put(ADDRESS, conversation.getAddress());
+        map.put(DEVICE_ADDRESS, conversation.getDeviceAddress());
+        map.put(DEVICE_ID, conversation.getDeviceId());
+        map.put(FINGERPRINT, conversation.getFingerprint());
+        map.put(BCC, conversation.getBcc());
+        map.put(CC, conversation.getCc());
+        map.put(LAST_CONTACT_DEVICE_ID, conversation.getLastContactDeviceId());
+        map.put(LAST_CONTACT_FIRST_NAME, conversation.getLastContactFirstName());
+        map.put(LAST_CONTACT_LAST_NAME, conversation.getLastContactLastName());
+        map.put(LAST_CONTACT_ID, conversation.getLastContactId());
+        map.put(LAST_CONTACT_MOBILE_NUMBER, conversation.getLastContactMobileNumber());
+        map.put(LAST_MESSAGE_BODY, conversation.getLastMessageBody());
+        map.put(LAST_MESSAGE_DATE, conversation.getLastMessageDate());
+        map.put(LAST_NON_DELETED_MESSAGE_DATE, conversation.getLastNonDeletedMessageDate());
+        map.put(UNREAD_COUNT, conversation.getUnreadCount());
+
+        map.put(LAST_UPDATED, conversation.getLastUpdated());
+        map.put(DATE_CREATED, conversation.getDateCreated());
+        map.put(VERSION, conversation.getVersion());
+
+        return map;
+    }
 
     private static String getString(Map<String, Object> map, String key) {
         if (map.containsKey(key)) {
@@ -150,4 +212,11 @@ public class SignalContentConverter {
         return false;
     }
 
+
+    private static Integer getInteger(Map<String, Object> map, String key) {
+        if (map.containsKey(key)) {
+            return (Integer) map.get(key);
+        }
+        return null;
+    }
 }
