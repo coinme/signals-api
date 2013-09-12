@@ -20,7 +20,7 @@ public class SignalConversation implements Serializable {
     private String fingerprint;
     private Long lastContactDeviceId;
     private Long lastContactId;
-    private String lastContactMobileNumber;
+    private String lastContactAddress;
     private String lastContactFirstName;
     private String lastContactLastName;
     private Long lastMessageDate;
@@ -95,12 +95,12 @@ public class SignalConversation implements Serializable {
         this.lastContactId = lastContactId;
     }
 
-    public String getLastContactMobileNumber() {
-        return lastContactMobileNumber;
+    public String getLastContactAddress() {
+        return lastContactAddress;
     }
 
-    public void setLastContactMobileNumber(String lastContactMobileNumber) {
-        this.lastContactMobileNumber = lastContactMobileNumber;
+    public void setLastContactAddress(String lastContactAddress) {
+        this.lastContactAddress = lastContactAddress;
     }
 
     public String getLastContactFirstName() {
@@ -198,7 +198,7 @@ public class SignalConversation implements Serializable {
             return false;
         if (lastContactLastName != null ? !lastContactLastName.equals(that.lastContactLastName) : that.lastContactLastName != null)
             return false;
-        if (lastContactMobileNumber != null ? !lastContactMobileNumber.equals(that.lastContactMobileNumber) : that.lastContactMobileNumber != null)
+        if (lastContactAddress != null ? !lastContactAddress.equals(that.lastContactAddress) : that.lastContactAddress != null)
             return false;
         if (lastMessageBody != null ? !lastMessageBody.equals(that.lastMessageBody) : that.lastMessageBody != null)
             return false;
@@ -223,7 +223,7 @@ public class SignalConversation implements Serializable {
         result = 31 * result + (fingerprint != null ? fingerprint.hashCode() : 0);
         result = 31 * result + (lastContactDeviceId != null ? lastContactDeviceId.hashCode() : 0);
         result = 31 * result + (lastContactId != null ? lastContactId.hashCode() : 0);
-        result = 31 * result + (lastContactMobileNumber != null ? lastContactMobileNumber.hashCode() : 0);
+        result = 31 * result + (lastContactAddress != null ? lastContactAddress.hashCode() : 0);
         result = 31 * result + (lastContactFirstName != null ? lastContactFirstName.hashCode() : 0);
         result = 31 * result + (lastContactLastName != null ? lastContactLastName.hashCode() : 0);
         result = 31 * result + (lastMessageDate != null ? lastMessageDate.hashCode() : 0);

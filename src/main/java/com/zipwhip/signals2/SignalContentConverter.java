@@ -106,7 +106,7 @@ public class SignalContentConverter {
         conversation.setLastContactId(getLong(map, LAST_CONTACT_ID));
         conversation.setLastContactFirstName(getString(map, LAST_CONTACT_FIRST_NAME));
         conversation.setLastContactLastName(getString(map, LAST_CONTACT_LAST_NAME));
-        conversation.setLastContactMobileNumber(getString(map, LAST_CONTACT_MOBILE_NUMBER));
+        conversation.setLastContactAddress(getString(map, LAST_CONTACT_MOBILE_NUMBER));
         conversation.setLastMessageBody(getString(map, LAST_MESSAGE_BODY));
         conversation.setLastMessageDate(getLong(map, LAST_MESSAGE_DATE));
         conversation.setLastNonDeletedMessageDate(getLong(map, LAST_NON_DELETED_MESSAGE_DATE));
@@ -178,7 +178,7 @@ public class SignalContentConverter {
         map.put(LAST_CONTACT_FIRST_NAME, conversation.getLastContactFirstName());
         map.put(LAST_CONTACT_LAST_NAME, conversation.getLastContactLastName());
         map.put(LAST_CONTACT_ID, conversation.getLastContactId());
-        map.put(LAST_CONTACT_MOBILE_NUMBER, conversation.getLastContactMobileNumber());
+        map.put(LAST_CONTACT_MOBILE_NUMBER, conversation.getLastContactAddress());
         map.put(LAST_MESSAGE_BODY, conversation.getLastMessageBody());
         map.put(LAST_MESSAGE_DATE, conversation.getLastMessageDate());
         map.put(LAST_NON_DELETED_MESSAGE_DATE, conversation.getLastNonDeletedMessageDate());
