@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author Michael
  * @version 1
  */
-//@JsonAutoDetect(fieldVisibility=JsonAutoDetect.Visibility.PUBLIC_ONLY)
 public class DefaultMessage implements Message {
 
     private static final long serialVersionUID = 8111225347753594028L;
