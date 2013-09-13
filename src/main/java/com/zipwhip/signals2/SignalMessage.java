@@ -186,4 +186,26 @@ public class SignalMessage implements Serializable {
         result = 31 * result + (hasAttachments ? 1 : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("SignalMessage");
+        sb.append("{address='").append(address).append('\'');
+        sb.append(", body='").append(body).append('\'');
+        sb.append(", transmissionState='").append(transmissionState).append('\'');
+        sb.append(", advertisement='").append(advertisement).append('\'');
+        sb.append(", fromName='").append(fromName).append('\'');
+        sb.append(", fingerprint='").append(fingerprint).append('\'');
+        sb.append(", deviceId=").append(deviceId);
+        sb.append(", contactId=").append(contactId);
+        sb.append(", contactDeviceId=").append(contactDeviceId);
+        sb.append(", messageType='").append(messageType).append('\'');
+        sb.append(", scheduledDate=").append(scheduledDate);
+        sb.append(", dateRead=").append(dateRead);
+        sb.append(", dateCreated=").append(dateCreated);
+        sb.append(", hasAttachments=").append(hasAttachments);
+        sb.append('}');
+        return sb.toString();
+    }
 }

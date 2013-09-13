@@ -152,4 +152,23 @@ public class SignalContact implements Serializable {
         result = 31 * result + (lastUpdated != null ? lastUpdated.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("SignalContact");
+        sb.append("{address='").append(address).append('\'');
+        sb.append(", carrier='").append(carrier).append('\'');
+        sb.append(", businessName='").append(businessName).append('\'');
+        sb.append(", deviceId=").append(deviceId);
+        sb.append(", targetGroupDevice=").append(targetGroupDevice);
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", version=").append(version);
+        sb.append(", dateCreated=").append(dateCreated);
+        sb.append(", lastUpdated=").append(lastUpdated);
+        sb.append('}');
+        return sb.toString();
+    }
 }

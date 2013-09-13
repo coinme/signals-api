@@ -69,4 +69,18 @@ public class DefaultMessage implements Message {
     public void setEvent(String event) {
         this.event = event;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("DefaultMessage");
+        sb.append("{address=").append(address);
+        sb.append(", content=").append(content);
+        sb.append(", timestamp=").append(timestamp);
+        sb.append(", id='").append(id).append('\'');
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", event='").append(event).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

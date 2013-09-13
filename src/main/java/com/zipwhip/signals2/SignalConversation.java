@@ -235,4 +235,30 @@ public class SignalConversation implements Serializable {
         result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("SignalConversation");
+        sb.append("{address='").append(address).append('\'');
+        sb.append(", bcc='").append(bcc).append('\'');
+        sb.append(", deviceAddress='").append(deviceAddress).append('\'');
+        sb.append(", deviceId=").append(deviceId);
+        sb.append(", cc='").append(cc).append('\'');
+        sb.append(", fingerprint='").append(fingerprint).append('\'');
+        sb.append(", lastContactDeviceId=").append(lastContactDeviceId);
+        sb.append(", lastContactId=").append(lastContactId);
+        sb.append(", lastContactAddress='").append(lastContactAddress).append('\'');
+        sb.append(", lastContactFirstName='").append(lastContactFirstName).append('\'');
+        sb.append(", lastContactLastName='").append(lastContactLastName).append('\'');
+        sb.append(", lastMessageDate=").append(lastMessageDate);
+        sb.append(", lastMessageBody='").append(lastMessageBody).append('\'');
+        sb.append(", lastNonDeletedMessageDate=").append(lastNonDeletedMessageDate);
+        sb.append(", unreadCount=").append(unreadCount);
+        sb.append(", version=").append(version);
+        sb.append(", lastUpdated=").append(lastUpdated);
+        sb.append(", dateCreated=").append(dateCreated);
+        sb.append('}');
+        return sb.toString();
+    }
 }
