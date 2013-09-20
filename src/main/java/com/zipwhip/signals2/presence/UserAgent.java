@@ -83,26 +83,52 @@ public class UserAgent implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UserAgent other = (UserAgent) obj;
-        if (build == null) {
-            if (other.build != null)
-                return false;
-        } else if (!build.equals(other.build))
-            return false;
-        if (makeModel == null) {
-            if (other.makeModel != null)
-                return false;
-        } else if (!makeModel.equals(other.makeModel))
-            return false;
-        else if (!version.equals(other.version))
-            return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserAgent)) return false;
+
+        UserAgent userAgent = (UserAgent) o;
+
+        if (build != null ? !build.equals(userAgent.build) : userAgent.build != null) return false;
+        if (category != userAgent.category) return false;
+        if (makeModel != null ? !makeModel.equals(userAgent.makeModel) : userAgent.makeModel != null) return false;
+        if (version != null ? !version.equals(userAgent.version) : userAgent.version != null) return false;
+
         return true;
+    }
+
+    //    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj)
+//            return true;
+//        if (obj == null)
+//            return false;
+//        if (getClass() != obj.getClass())
+//            return false;
+//        UserAgent other = (UserAgent) obj;
+//        if (build == null) {
+//            if (other.build != null)
+//                return false;
+//        } else if (!build.equals(other.build))
+//            return false;
+//        if (makeModel == null) {
+//            if (other.makeModel != null)
+//                return false;
+//        } else if (!makeModel.equals(other.makeModel))
+//            return false;
+//        else if (!version.equals(other.version))
+//            return false;
+//        return true;
+//    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("UserAgent{");
+        sb.append("category=").append(category);
+        sb.append(", makeModel='").append(makeModel).append('\'');
+        sb.append(", version='").append(version).append('\'');
+        sb.append(", build='").append(build).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

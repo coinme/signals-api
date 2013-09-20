@@ -44,4 +44,33 @@ public class PresenceEntry implements Serializable {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("PresenceEntry{");
+        sb.append("subscriptionId='").append(subscriptionId).append('\'');
+        sb.append(", status=").append(status);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PresenceEntry)) return false;
+
+        PresenceEntry that = (PresenceEntry) o;
+
+        if (status != that.status) return false;
+        if (subscriptionId != null ? !subscriptionId.equals(that.subscriptionId) : that.subscriptionId != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = subscriptionId != null ? subscriptionId.hashCode() : 0;
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
+    }
 }
