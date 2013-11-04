@@ -19,7 +19,6 @@ public class SignalMessage implements Serializable {
     private String fromName;
     private String fingerprint;
     private Long deviceId;
-    private Long contactId;
     private Long contactDeviceId;
     private String messageType;
     private Long scheduledDate;
@@ -81,14 +80,6 @@ public class SignalMessage implements Serializable {
 
     public void setDeviceId(Long deviceId) {
         this.deviceId = deviceId;
-    }
-
-    public Long getContactId() {
-        return contactId;
-    }
-
-    public void setContactId(Long contactId) {
-        this.contactId = contactId;
     }
 
     public Long getContactDeviceId() {
@@ -153,7 +144,6 @@ public class SignalMessage implements Serializable {
         if (body != null ? !body.equals(that.body) : that.body != null) return false;
         if (contactDeviceId != null ? !contactDeviceId.equals(that.contactDeviceId) : that.contactDeviceId != null)
             return false;
-        if (contactId != null ? !contactId.equals(that.contactId) : that.contactId != null) return false;
         if (dateCreated != null ? !dateCreated.equals(that.dateCreated) : that.dateCreated != null) return false;
         if (dateRead != null ? !dateRead.equals(that.dateRead) : that.dateRead != null) return false;
         if (deviceId != null ? !deviceId.equals(that.deviceId) : that.deviceId != null) return false;
@@ -177,7 +167,6 @@ public class SignalMessage implements Serializable {
         result = 31 * result + (fromName != null ? fromName.hashCode() : 0);
         result = 31 * result + (fingerprint != null ? fingerprint.hashCode() : 0);
         result = 31 * result + (deviceId != null ? deviceId.hashCode() : 0);
-        result = 31 * result + (contactId != null ? contactId.hashCode() : 0);
         result = 31 * result + (contactDeviceId != null ? contactDeviceId.hashCode() : 0);
         result = 31 * result + (messageType != null ? messageType.hashCode() : 0);
         result = 31 * result + (scheduledDate != null ? scheduledDate.hashCode() : 0);
@@ -198,7 +187,6 @@ public class SignalMessage implements Serializable {
         sb.append(", fromName='").append(fromName).append('\'');
         sb.append(", fingerprint='").append(fingerprint).append('\'');
         sb.append(", deviceId=").append(deviceId);
-        sb.append(", contactId=").append(contactId);
         sb.append(", contactDeviceId=").append(contactDeviceId);
         sb.append(", messageType='").append(messageType).append('\'');
         sb.append(", scheduledDate=").append(scheduledDate);

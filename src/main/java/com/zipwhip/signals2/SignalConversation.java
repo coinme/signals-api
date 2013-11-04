@@ -19,7 +19,6 @@ public class SignalConversation implements Serializable {
     private String cc;
     private String fingerprint;
     private Long lastContactDeviceId;
-    private Long lastContactId;
     private String lastContactAddress;
     private String lastContactFirstName;
     private String lastContactLastName;
@@ -85,14 +84,6 @@ public class SignalConversation implements Serializable {
 
     public void setLastContactDeviceId(Long lastContactDeviceId) {
         this.lastContactDeviceId = lastContactDeviceId;
-    }
-
-    public Long getLastContactId() {
-        return lastContactId;
-    }
-
-    public void setLastContactId(Long lastContactId) {
-        this.lastContactId = lastContactId;
     }
 
     public String getLastContactAddress() {
@@ -194,8 +185,6 @@ public class SignalConversation implements Serializable {
             return false;
         if (lastContactFirstName != null ? !lastContactFirstName.equals(that.lastContactFirstName) : that.lastContactFirstName != null)
             return false;
-        if (lastContactId != null ? !lastContactId.equals(that.lastContactId) : that.lastContactId != null)
-            return false;
         if (lastContactLastName != null ? !lastContactLastName.equals(that.lastContactLastName) : that.lastContactLastName != null)
             return false;
         if (lastContactAddress != null ? !lastContactAddress.equals(that.lastContactAddress) : that.lastContactAddress != null)
@@ -222,7 +211,6 @@ public class SignalConversation implements Serializable {
         result = 31 * result + (cc != null ? cc.hashCode() : 0);
         result = 31 * result + (fingerprint != null ? fingerprint.hashCode() : 0);
         result = 31 * result + (lastContactDeviceId != null ? lastContactDeviceId.hashCode() : 0);
-        result = 31 * result + (lastContactId != null ? lastContactId.hashCode() : 0);
         result = 31 * result + (lastContactAddress != null ? lastContactAddress.hashCode() : 0);
         result = 31 * result + (lastContactFirstName != null ? lastContactFirstName.hashCode() : 0);
         result = 31 * result + (lastContactLastName != null ? lastContactLastName.hashCode() : 0);
@@ -247,7 +235,6 @@ public class SignalConversation implements Serializable {
         sb.append(", cc='").append(cc).append('\'');
         sb.append(", fingerprint='").append(fingerprint).append('\'');
         sb.append(", lastContactDeviceId=").append(lastContactDeviceId);
-        sb.append(", lastContactId=").append(lastContactId);
         sb.append(", lastContactAddress='").append(lastContactAddress).append('\'');
         sb.append(", lastContactFirstName='").append(lastContactFirstName).append('\'');
         sb.append(", lastContactLastName='").append(lastContactLastName).append('\'');

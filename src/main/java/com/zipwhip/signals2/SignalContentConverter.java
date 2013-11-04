@@ -23,7 +23,6 @@ public class SignalContentConverter {
     public static final String FROM_NAME = "fromName";
     public static final String FINGERPRINT = "fingerprint";
     public static final String DEVICE_ID = "deviceId";
-    public static final String CONTACT_ID = "contactId";
     public static final String CONTACT_DEVICE_ID = "contactDeviceId";
     public static final String MESSAGE_TYPE = "messageType";
     public static final String SCHEDULED_DATE = "scheduledDate";
@@ -42,10 +41,9 @@ public class SignalContentConverter {
     public static final String BCC = "bcc";
     public static final String DEVICE_ADDRESS = "deviceAddress";
     public static final String LAST_CONTACT_DEVICE_ID = "lastContactDeviceId";
-    public static final String LAST_CONTACT_ID = "lastContactId";
     public static final String LAST_CONTACT_FIRST_NAME = "lastContactFirstName";
     public static final String LAST_CONTACT_LAST_NAME = "lastContactLastName";
-    public static final String LAST_CONTACT_MOBILE_NUMBER = "lastContactMobileNumber";
+    public static final String LAST_CONTACT_ADDRESS = "lastContactAddress";
     public static final String LAST_MESSAGE_BODY = "lastMessageBody";
     public static final String LAST_MESSAGE_DATE = "lastMessageDate";
     public static final String LAST_NON_DELETED_MESSAGE_DATE = "lastNonDeletedMessageDate";
@@ -61,7 +59,6 @@ public class SignalContentConverter {
         message.setFromName(getString(map, FROM_NAME));
         message.setFingerprint(getString(map, FINGERPRINT));
         message.setDeviceId(getLong(map, DEVICE_ID));
-        message.setContactId(getLong(map, CONTACT_ID));
         message.setContactDeviceId(getLong(map, CONTACT_DEVICE_ID));
         message.setMessageType(getString(map, MESSAGE_TYPE));
         message.setScheduledDate(getLong(map, SCHEDULED_DATE));
@@ -103,10 +100,9 @@ public class SignalContentConverter {
         conversation.setDeviceAddress(getString(map, DEVICE_ADDRESS));
         conversation.setFingerprint(getString(map, FINGERPRINT));
         conversation.setLastContactDeviceId(getLong(map, LAST_CONTACT_DEVICE_ID));
-        conversation.setLastContactId(getLong(map, LAST_CONTACT_ID));
         conversation.setLastContactFirstName(getString(map, LAST_CONTACT_FIRST_NAME));
         conversation.setLastContactLastName(getString(map, LAST_CONTACT_LAST_NAME));
-        conversation.setLastContactAddress(getString(map, LAST_CONTACT_MOBILE_NUMBER));
+        conversation.setLastContactAddress(getString(map, LAST_CONTACT_ADDRESS));
         conversation.setLastMessageBody(getString(map, LAST_MESSAGE_BODY));
         conversation.setLastMessageDate(getLong(map, LAST_MESSAGE_DATE));
         conversation.setLastNonDeletedMessageDate(getLong(map, LAST_NON_DELETED_MESSAGE_DATE));
@@ -133,7 +129,6 @@ public class SignalContentConverter {
         map.put(ATTACHMENTS, message.isHasAttachments());
         map.put(BODY, message.getBody());
         map.put(CONTACT_DEVICE_ID, message.getContactDeviceId());
-        map.put(CONTACT_ID, message.getContactId());
         map.put(DATE_READ, message.getDateRead());
         map.put(DEVICE_ID, message.getDeviceId());
         map.put(FINGERPRINT, message.getFingerprint());
@@ -146,10 +141,13 @@ public class SignalContentConverter {
         return map;
     }
 
-    public static HashMap<String, Object> toMap(SignalContact contact) throws Exception {
+    public static HashMap<String, Object> toMap(SignalContact contact, boolean includeAddress) throws Exception {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
-        map.put(ADDRESS, contact.getAddress());
+        if (includeAddress) {
+            map.put(ADDRESS, contact.getAddress());
+        }
+
         map.put(CARRIER, contact.getCarrier());
         map.put(BUSINESS_NAME, contact.getBusinessName());
         map.put(DEVICE_ID, contact.getDeviceId());
@@ -177,8 +175,7 @@ public class SignalContentConverter {
         map.put(LAST_CONTACT_DEVICE_ID, conversation.getLastContactDeviceId());
         map.put(LAST_CONTACT_FIRST_NAME, conversation.getLastContactFirstName());
         map.put(LAST_CONTACT_LAST_NAME, conversation.getLastContactLastName());
-        map.put(LAST_CONTACT_ID, conversation.getLastContactId());
-        map.put(LAST_CONTACT_MOBILE_NUMBER, conversation.getLastContactAddress());
+        map.put(LAST_CONTACT_ADDRESS, conversation.getLastContactAddress());
         map.put(LAST_MESSAGE_BODY, conversation.getLastMessageBody());
         map.put(LAST_MESSAGE_DATE, conversation.getLastMessageDate());
         map.put(LAST_NON_DELETED_MESSAGE_DATE, conversation.getLastNonDeletedMessageDate());
