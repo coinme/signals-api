@@ -63,6 +63,11 @@ public class Presence implements TimelineEvent {
      */
     private PresenceExtraInfo extraInfo;
 
+    /**
+     * For filtering results to a specific label
+     */
+    private String label;
+
     public Presence() {
 
     }
@@ -123,6 +128,10 @@ public class Presence implements TimelineEvent {
         this.extraInfo = extraInfo;
     }
 
+    public String getLabel() { return label; }
+
+    public void setLabel(String label) { this.label = label; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -134,6 +143,7 @@ public class Presence implements TimelineEvent {
         if (address != null ? !address.equals(presence.address) : presence.address != null) return false;
         if (connected != null ? !connected.equals(presence.connected) : presence.connected != null) return false;
         if (extraInfo != null ? !extraInfo.equals(presence.extraInfo) : presence.extraInfo != null) return false;
+        if (label != null ? !label.equals(presence.label) : presence.label != null) return false;
         if (ip != null ? !ip.equals(presence.ip) : presence.ip != null) return false;
         if (lastActive != null ? !lastActive.equals(presence.lastActive) : presence.lastActive != null) return false;
         if (userAgent != null ? !userAgent.equals(presence.userAgent) : presence.userAgent != null) return false;
@@ -147,24 +157,6 @@ public class Presence implements TimelineEvent {
         return true;
     }
 
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Presence)) return false;
-//
-//        Presence presence = (Presence) o;
-//
-//        if (!address.equals(presence.address)) return false;
-//        if (connected != null ? !connected.equals(presence.connected) : presence.connected != null) return false;
-//        if (extraInfo != null ? !extraInfo.equals(presence.extraInfo) : presence.extraInfo != null) return false;
-//        if (ip != null ? !ip.equals(presence.ip) : presence.ip != null) return false;
-//        if (lastActive !lastActive.equals(presence.lastActive)) return false;
-//        if (!entries.equals(presence.entries)) return false;
-//        if (userAgent != null ? !userAgent.equals(presence.userAgent) : presence.userAgent != null) return false;
-//
-//        return true;
-//    }
-
     @Override
     public int hashCode() {
         int result = ip != null ? ip.hashCode() : 0;
@@ -174,6 +166,7 @@ public class Presence implements TimelineEvent {
         result = 31 * result + (lastActive != null ? lastActive.hashCode() : 0);
         result = 31 * result + (entries != null ? entries.hashCode() : 0);
         result = 31 * result + (extraInfo != null ? extraInfo.hashCode() : 0);
+        result = 31 * result + (label != null ? label.hashCode() : 0);
         return result;
     }
 
@@ -188,6 +181,7 @@ public class Presence implements TimelineEvent {
         sb.append(", lastActive=").append(lastActive);
         sb.append(", entries=").append(entries);
         sb.append(", extraInfo=").append(extraInfo);
+        sb.append(", label=").append(label);
         sb.append('}');
         return sb.toString();
     }
