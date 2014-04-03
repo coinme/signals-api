@@ -68,6 +68,11 @@ public class Presence implements TimelineEvent {
      */
     private String label;
 
+    /**
+     * Used to tie a specific Presence object to a specific client
+     */
+    private String serialUid;
+
     public Presence() {
 
     }
@@ -132,6 +137,14 @@ public class Presence implements TimelineEvent {
 
     public void setLabel(String label) { this.label = label; }
 
+    public String getSerialUid() { return serialUid; }
+
+    public void setSerialUid(String serialUid) { this.serialUid = serialUid; }
+
+    public long getTimestamp() { return timestamp; }
+
+    public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,6 +157,7 @@ public class Presence implements TimelineEvent {
         if (connected != null ? !connected.equals(presence.connected) : presence.connected != null) return false;
         if (extraInfo != null ? !extraInfo.equals(presence.extraInfo) : presence.extraInfo != null) return false;
         if (label != null ? !label.equals(presence.label) : presence.label != null) return false;
+        if (serialUid != null ? !serialUid.equals(presence.serialUid) : presence.serialUid != null) return false;
         if (ip != null ? !ip.equals(presence.ip) : presence.ip != null) return false;
         if (lastActive != null ? !lastActive.equals(presence.lastActive) : presence.lastActive != null) return false;
         if (userAgent != null ? !userAgent.equals(presence.userAgent) : presence.userAgent != null) return false;
@@ -167,6 +181,7 @@ public class Presence implements TimelineEvent {
         result = 31 * result + (entries != null ? entries.hashCode() : 0);
         result = 31 * result + (extraInfo != null ? extraInfo.hashCode() : 0);
         result = 31 * result + (label != null ? label.hashCode() : 0);
+        result = 31 * result + (serialUid != null ? serialUid.hashCode() : 0);
         return result;
     }
 
@@ -182,15 +197,8 @@ public class Presence implements TimelineEvent {
         sb.append(", entries=").append(entries);
         sb.append(", extraInfo=").append(extraInfo);
         sb.append(", label=").append(label);
+        sb.append(", serialUid=").append(serialUid);
         sb.append('}');
         return sb.toString();
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
     }
 }
