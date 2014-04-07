@@ -163,9 +163,7 @@ public class Presence implements TimelineEvent {
         if (userAgent != null ? !userAgent.equals(presence.userAgent) : presence.userAgent != null) return false;
 
         if (presence.entries != null || entries != null) {
-            if ((presence.entries != entries)) {
-                return false;
-            } else if (!(presence.entries.size() == entries.size() && presence.entries.containsAll(entries))) {
+            if (!(presence.entries.size() == entries.size() && presence.entries.containsAll(entries))) {
                 return false;
             }
         }
