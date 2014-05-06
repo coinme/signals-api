@@ -34,11 +34,29 @@ public class UserAgent implements Serializable {
     private String version;
 
     /**
-     * The build of the software. Example: "T-Mobile Zipgroups"
+     * The build/skin/edition of the software. Example: "T-Mobile Zipgroups"
      *
      * (software)
      */
     private String build;
+
+    public UserAgent(UserAgentCategory category, String makeModel, String build, String version) {
+        this.category = category;
+        this.makeModel = makeModel;
+        this.version = version;
+        this.build = build;
+    }
+
+    public UserAgent(UserAgentCategory category, String makeModel) {
+        this.category = category;
+        this.makeModel = makeModel;
+        this.version = "1.0.0";
+        this.build = "default";
+    }
+
+    public UserAgent() {
+
+    }
 
     public UserAgentCategory getCategory() {
         return category;
