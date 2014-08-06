@@ -23,6 +23,11 @@ public class VoidAddress extends AddressBase {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "void";
+    }
+
     public static VoidAddress getInstance() {
         return instance;
     }
