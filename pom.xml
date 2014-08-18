@@ -12,7 +12,7 @@
 
     <groupId>com.zipwhip</groupId>
     <artifactId>signals-api</artifactId>
-    <version>1.0.9-SNAPSHOT</version>
+    <version>1.0.10-SNAPSHOT</version>
     <name>signals-api</name>
     <description>signals api</description>
     <packaging>jar</packaging>
