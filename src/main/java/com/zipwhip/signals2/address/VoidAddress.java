@@ -31,4 +31,20 @@ public class VoidAddress extends AddressBase {
     public static VoidAddress getInstance() {
         return instance;
     }
+
+    public static Address wrapNotNull(Address address) {
+        if (address == null) {
+            return getInstance();
+        }
+
+        return address;
+    }
+
+    public static Address unwrapNotNull(Address address) {
+        if (address == null || address instanceof VoidAddress) {
+            return null;
+        }
+
+        return address;
+    }
 }
